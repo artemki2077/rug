@@ -5,7 +5,7 @@ import 'package:rug/feedback_model.dart';
 import 'dart:convert' as convert;
 import 'package:intl/intl.dart';
 
-var form = DateFormat('MM/dd');
+var form = DateFormat('yy/MM/dd');
 
 class Alfa extends StatefulWidget {
   @override
@@ -124,7 +124,7 @@ class _AlfaState extends State<Alfa> {
                         child: DataTable(
                           columnSpacing: 10,
                           columns: const <DataColumn>[
-                            DataColumn(label: Text('дата')),
+                            DataColumn(label: Text('гг/мм/дд')),
                             DataColumn(label: Text('проект')),
                             DataColumn(
                               label: Text("приход"),
@@ -138,17 +138,15 @@ class _AlfaState extends State<Alfa> {
                             globals.ff.length,
                             (int i) => DataRow(
                               cells: <DataCell>[
-                                DataCell(SizedBox(
-                                    width: 40,
-                                    child: Text(
+                                DataCell(Text(
                                         form.format(
                                             globals.ff.elementAt(i).time),
-                                        softWrap: true))),
+                                        softWrap: false)),
                                 DataCell(SizedBox(
                                     width: 90,
                                     child: Text(
                                         "${globals.ff.elementAt(i).project}",
-                                        softWrap: true))),
+                                        softWrap: false))),
                                 DataCell(Text(globals.ff.elementAt(i).prixod !=
                                         ""
                                     ? toNum(

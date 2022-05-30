@@ -25,10 +25,11 @@ class _HomeState extends State<Home> {
       var jsonFeedback = convert.jsonDecode(raw.body);
       var data = jsonFeedback['data'];
       List endeds = jsonFeedback['ended'];
+      List notShows = jsonFeedback['notShow'];
       data.forEach((element) {
         if (element["дата"] != "" && (widget.ended! ? endeds.contains(element['проект']) : !endeds.contains(element['проект']))) {
           FeedbackModel feedbackModel = FeedbackModel();
-          if (!globals.hhh.contains(element['проект'])) {
+          if (!notShows.contains(element['проект'])) {
             if (!globals.h.contains(element['проект'])) {
               globals.h.add(element['проект']);
             }

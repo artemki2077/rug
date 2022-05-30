@@ -5,7 +5,7 @@ import 'package:rug/feedback_model.dart';
 import 'dart:convert' as convert;
 import 'package:intl/intl.dart';
 
-var form = DateFormat('dd/MM');
+var form = DateFormat('yy/dd/MM');
 
 class Sber extends StatefulWidget {
   @override
@@ -48,15 +48,18 @@ class _SberState extends State<Sber> {
             feedbackModel.nal = element['нал/безнал/другое'];
             feedbackModel.project = element['проект'];
             feedbackModel.whoAndWhat = element['кто - что'];
-            feedbackModel.prixod = element['приход'];
-            feedbackModel.rasixod = element['расход'];
+            feedbackModel.prixod =
+                element['приход'] != "" ? element['приход'] : 0;
+            feedbackModel.rasixod =
+                element['расход'] != "" ? element['расход'] : 0;
             if (element['расход'] != "") {
               SumRasixod += element['расход'];
             }
             if (element['приход'] != "") {
               SumPrixod += element['приход'];
             }
-            feedbackModel.ostatok = element['остаток'];
+            feedbackModel.ostatok =
+                element['остаток'] != "" ? element['остаток'] : 0;
             feedbackModel.vid = element['вид расходов'];
             feedbackModel.podvid = element['подвид'];
             feedbackModel.ytoch = element['уточнения'];
@@ -124,7 +127,7 @@ class _SberState extends State<Sber> {
                         child: DataTable(
                           columnSpacing: 10,
                           columns: const <DataColumn>[
-                            DataColumn(label: Text('дата')),
+                            DataColumn(label: Text('гг/мм/дд')),
                             DataColumn(label: Text('проект')),
                             DataColumn(
                               label: Text("приход"),
@@ -138,12 +141,10 @@ class _SberState extends State<Sber> {
                             globals.ff.length,
                             (int i) => DataRow(
                               cells: <DataCell>[
-                                DataCell(SizedBox(
-                                    width: 40,
-                                    child: Text(
+                                DataCell(Text(
                                         form.format(
                                             globals.ff.elementAt(i).time),
-                                        softWrap: true))),
+                                        softWrap: false)),
                                 DataCell(SizedBox(
                                     width: 90,
                                     child: Text(

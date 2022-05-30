@@ -5,7 +5,7 @@ import 'package:rug/feedback_model.dart';
 import 'dart:convert' as convert;
 import 'package:intl/intl.dart';
 
-var form = DateFormat('MM/dd');
+var form = DateFormat('yy/MM/dd');
 
 class Podelili extends StatefulWidget {
   @override
@@ -287,7 +287,7 @@ class _PodeliliState extends State<Podelili> {
                                   (int i) => DataRow(
                                     cells: <DataCell>[
                                       DataCell(SizedBox(
-                                          width: 40,
+                                          width: 80,
                                           child: Text(
                                               form.format(
                                                   globals.ff.elementAt(i).time),

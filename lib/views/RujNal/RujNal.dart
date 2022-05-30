@@ -3,6 +3,9 @@ import 'package:rug/globals.dart' as globals;
 import 'package:http/http.dart' as http;
 import 'package:rug/feedback_model.dart';
 import 'dart:convert' as convert;
+import 'package:intl/intl.dart';
+
+var form = DateFormat('yy/MM/dd');
 
 class RugNal extends StatefulWidget {
   @override
@@ -39,7 +42,7 @@ class _RugNalState extends State<RugNal> {
         if (element["дата"] != "") {
           FeedbackModel feedbackModel = FeedbackModel();
           if (element['компания'] == "Руж") {
-            feedbackModel.time = element['дата'];
+            feedbackModel.time = DateTime.parse(element['дата']);
             feedbackModel.compani = element['компания'];
             feedbackModel.nal = element['нал/безнал/другое'];
             feedbackModel.project = element['проект'];
@@ -122,28 +125,11 @@ class _RugNalState extends State<RugNal> {
                             (int i) => DataRow(
                               cells: <DataCell>[
                                 DataCell(SizedBox(
-                                    width: 40,
+                                    width: 80,
                                     child: Text(
-                                        globals.ff
-                                                .elementAt(i)
-                                                .time
-                                                .toString()
-                                                .split("T")
-                                                .elementAt(0)
-                                                .toString()
-                                                .split("-")
-                                                .elementAt(1) +
-                                            "." +
-                                            globals.ff
-                                                .elementAt(i)
-                                                .time
-                                                .toString()
-                                                .split("T")
-                                                .elementAt(0)
-                                                .toString()
-                                                .split("-")
-                                                .elementAt(2),
-                                        softWrap: true))),
+                                        form.format(
+                                            globals.ff.elementAt(i).time),
+                                        softWrap: false))),
                                 DataCell(SizedBox(
                                     width: 90,
                                     child: Text(

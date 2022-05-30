@@ -13,6 +13,13 @@ class Year extends StatefulWidget {
 }
 
 class _YearState extends State<Year> {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
+
+  _showSnackbar(String message) {
+    final snackBar = SnackBar(content: Text(message));
+    _scaffoldKey.currentState!.showSnackBar(snackBar);
+  }
+
   @override
   void initState() {
     super.initState();
@@ -27,7 +34,11 @@ class _YearState extends State<Year> {
             onPressed: () {
               globals.year = globals.url21_22;
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Home(ended: false,)));
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Home(
+                            ended: false,
+                          )));
             },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.blue),
@@ -35,9 +46,7 @@ class _YearState extends State<Year> {
                 textStyle:
                     MaterialStateProperty.all(const TextStyle(fontSize: 30))),
             child: const SizedBox(
-                width: 200,
-                child: Center(
-                    child: Text("Не ended")))),
+                width: 200, child: Center(child: Text("Не ended")))),
       ),
     );
     yearButtons.add(
@@ -47,7 +56,11 @@ class _YearState extends State<Year> {
             onPressed: () {
               globals.year = globals.url21_22;
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Home(ended: true,)));
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Home(
+                            ended: true,
+                          )));
             },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.blue),
@@ -55,12 +68,10 @@ class _YearState extends State<Year> {
                 textStyle:
                     MaterialStateProperty.all(const TextStyle(fontSize: 30))),
             child: const SizedBox(
-                width: 200,
-                child: Center(
-                    child: Text("ended")))),
+                width: 200, child: Center(child: Text("ended")))),
       ),
     );
-    
+
     yearButtons.add(
       Container(
         margin: const EdgeInsets.only(top: 10.0),
@@ -79,7 +90,7 @@ class _YearState extends State<Year> {
                 width: 200,
                 child: Center(
                     child: Text(
-                  "Монтаж ЗП (2021)",
+                  "Монтаж ЗП (2022)",
                   style: TextStyle(fontSize: 16),
                 )))),
       ),
@@ -102,7 +113,7 @@ class _YearState extends State<Year> {
                 width: 200,
                 child: Center(
                     child: Text(
-                  "Руж нал",
+                  "Руж нал(2022)",
                   style: TextStyle(fontSize: 23),
                 )))),
       ),
@@ -176,12 +187,58 @@ class _YearState extends State<Year> {
                 )))),
       ),
     );
+    if (globals.years.containsKey(2018)) {
+      yearButtons = <Widget>[];
+      yearButtons.add(
+        Container(
+          margin: const EdgeInsets.only(top: 10.0),
+          child: ElevatedButton(
+              onPressed: () {
+                _showSnackbar("error");
+              },
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.redAccent),
+                  padding: MaterialStateProperty.all(const EdgeInsets.all(15)),
+                  textStyle:
+                      MaterialStateProperty.all(const TextStyle(fontSize: 30))),
+              child: const SizedBox(
+                  width: 200,
+                  child: Center(
+                      child: Text(
+                    "2018",
+                    style: TextStyle(fontSize: 23),
+                  )))),
+        ),
+      );
+      yearButtons.add(
+        Container(
+          margin: const EdgeInsets.only(top: 10.0),
+          child: ElevatedButton(
+              onPressed: () {
+                _showSnackbar("error");
+              },
+              style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.amber),
+                  padding: MaterialStateProperty.all(const EdgeInsets.all(15)),
+                  textStyle:
+                      MaterialStateProperty.all(const TextStyle(fontSize: 30))),
+              child: const SizedBox(
+                  width: 200,
+                  child: Center(
+                      child: Text(
+                    "2007",
+                    style: TextStyle(fontSize: 23),
+                  )))),
+        ),
+      );
+    }
     return yearButtons;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        key: _scaffoldKey,
         appBar: AppBar(
           title: const Text("Года"),
           automaticallyImplyLeading: false,

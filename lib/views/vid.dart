@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rug/globals.dart' as globals;
+import 'package:intl/intl.dart';
+
+var form = DateFormat('yy/MM/dd');
 
 class vids extends StatefulWidget {
   @override
@@ -78,11 +81,11 @@ class _vidsState extends State<vids> {
                             (int index) => DataRow(
                           cells: <DataCell>[
                             DataCell(Text(
-                                "${globals.ff.elementAt(index).time.toString().split("T").elementAt(0).toString().split("-").elementAt(1) + "." + globals.ff.elementAt(index).time.toString().split("T").elementAt(0).toString().split("-").elementAt(2)}")),
+                                form.format(DateTime.parse(globals.ff.elementAt(index).time.toString())))),
                             DataCell(Text(
-                                "${globals.ff.elementAt(pp.elementAt(index)).prixod != ""  ? num(globals.ff.elementAt(pp.elementAt(index)).prixod.toInt()) : ""}")),
+                                globals.ff.elementAt(pp.elementAt(index)).prixod != ""  ? num(globals.ff.elementAt(pp.elementAt(index)).prixod.toInt()) : "")),
                             DataCell(Text(
-                                "${globals.ff.elementAt(pp.elementAt(index)).rasixod != ""  ? num(globals.ff.elementAt(pp.elementAt(index)).rasixod.toInt()) : ""}")),
+                                globals.ff.elementAt(pp.elementAt(index)).rasixod != ""  ? num(globals.ff.elementAt(pp.elementAt(index)).rasixod.toInt()) : "")),
                             DataCell(Container(
                                 width: 120,
                                 child: Text(
@@ -95,7 +98,7 @@ class _vidsState extends State<vids> {
                                 "${globals.ff.elementAt(pp.elementAt(index)).project}")),
 
                             DataCell(Text(
-                                "${globals.ff.elementAt(pp.elementAt(index)).ostatok != ""  ? num(globals.ff.elementAt(pp.elementAt(index)).ostatok.toInt()) : ""}")),
+                                globals.ff.elementAt(pp.elementAt(index)).ostatok != ""  ? num(globals.ff.elementAt(pp.elementAt(index)).ostatok.toInt()) : "")),
                             DataCell(Text(
                                 "${globals.ff.elementAt(pp.elementAt(index)).vid}")),
                             DataCell(Text(
@@ -105,9 +108,9 @@ class _vidsState extends State<vids> {
                             DataCell(Text(
                                 "${globals.ff.elementAt(pp.elementAt(index)).inPer}")),
                             DataCell(Text(
-                                "${globals.ff.elementAt(pp.elementAt(index)).sumDogovor != ""  ? num(globals.ff.elementAt(pp.elementAt(index)).sumDogovor.toInt()) : ""}")),
+                                globals.ff.elementAt(pp.elementAt(index)).sumDogovor != ""  ? num(globals.ff.elementAt(pp.elementAt(index)).sumDogovor.toInt()) : "")),
                             DataCell(Text(
-                                "${globals.ff.elementAt(pp.elementAt(index)).numDogovor != ""  ? num(globals.ff.elementAt(pp.elementAt(index)).numDogovor.toInt()) : ""}")),
+                                globals.ff.elementAt(pp.elementAt(index)).numDogovor != ""  ? num(globals.ff.elementAt(pp.elementAt(index)).numDogovor.toInt()) : "")),
                           ],
                         ),
                       ),
