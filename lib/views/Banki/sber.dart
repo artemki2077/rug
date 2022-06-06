@@ -3,11 +3,12 @@ import 'package:rug/globals.dart' as globals;
 import 'package:http/http.dart' as http;
 import 'package:rug/feedback_model.dart';
 import 'dart:convert' as convert;
-import 'package:intl/intl.dart';
 
-var form = DateFormat('yy/dd/MM');
+var form = globals.form;
 
 class Sber extends StatefulWidget {
+  const Sber({Key? key}) : super(key: key);
+
   @override
   _SberState createState() => _SberState();
 }
@@ -75,6 +76,7 @@ class _SberState extends State<Sber> {
       setState(() {
         globals.ff
             .sort(((a, b) => a.time.toString().compareTo(b.time.toString())));
+        globals.ff = globals.ff.reversed.toList();
       });
     });
   }
@@ -126,25 +128,26 @@ class _SberState extends State<Sber> {
                         scrollDirection: Axis.horizontal,
                         child: DataTable(
                           columnSpacing: 10,
-                          columns: const <DataColumn>[
-                            DataColumn(label: Text('гг/мм/дд')),
-                            DataColumn(label: Text('проект')),
-                            DataColumn(
+                          columns: <DataColumn>[
+                            DataColumn(label: Text(globals.text_form)),
+                            const DataColumn(label: Text('проект')),
+                            const DataColumn(
                               label: Text("приход"),
                               numeric: true,
                             ),
-                            DataColumn(label: Text("расход"), numeric: true),
-                            DataColumn(label: Text('кто - что')),
-                            DataColumn(label: Text("остаток"), numeric: true),
+                            const DataColumn(
+                                label: Text("расход"), numeric: true),
+                            const DataColumn(label: Text('кто - что')),
+                            const DataColumn(
+                                label: Text("остаток"), numeric: true),
                           ],
                           rows: List<DataRow>.generate(
                             globals.ff.length,
                             (int i) => DataRow(
                               cells: <DataCell>[
                                 DataCell(Text(
-                                        form.format(
-                                            globals.ff.elementAt(i).time),
-                                        softWrap: false)),
+                                    form.format(globals.ff.elementAt(i).time),
+                                    softWrap: false)),
                                 DataCell(SizedBox(
                                     width: 90,
                                     child: Text(
@@ -180,7 +183,7 @@ class _SberState extends State<Sber> {
                     ),
                   )
                 : Center(
-                    child: Container(child: Text(sError)),
+                    child: Text(sError),
                   ));
   }
 }

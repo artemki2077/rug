@@ -3,9 +3,8 @@ import 'package:rug/globals.dart' as globals;
 import 'package:http/http.dart' as http;
 import 'package:rug/feedback_model.dart';
 import 'dart:convert' as convert;
-import 'package:intl/intl.dart';
 
-var form = DateFormat('yy/MM/dd');
+var form = globals.form;
 
 class RugNal extends StatefulWidget {
   @override
@@ -67,13 +66,13 @@ class _RugNalState extends State<RugNal> {
           }
         }
       });
-      globals.ff.reversed.forEach((e) {
+      for (var e in globals.ff.reversed) {
         fo = (e.prixod != "" ? e.prixod.toInt() : 0) -
             (e.rasixod != "" ? e.rasixod.toInt() : 0) +
             fo;
         o.add(fo);
         bf = false;
-      });
+      }
       setState(() {});
     });
     // .catchError((error) {
@@ -168,7 +167,7 @@ class _RugNalState extends State<RugNal> {
                     ),
                   )
                 : Center(
-                    child: Container(child: Text(sError)),
+                    child: Text(sError),
                   ));
   }
 }

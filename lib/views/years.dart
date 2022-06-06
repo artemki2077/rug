@@ -8,6 +8,8 @@ import 'Banki/Alfa.dart';
 import 'podelili.dart';
 
 class Year extends StatefulWidget {
+  const Year({Key? key}) : super(key: key);
+
   @override
   _YearState createState() => _YearState();
 }
@@ -125,7 +127,7 @@ class _YearState extends State<Year> {
             onPressed: () {
               globals.year = globals.years.values.elementAt(2);
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Sber()));
+                  context, MaterialPageRoute(builder: (context) => const Sber()));
             },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.green),
@@ -148,7 +150,7 @@ class _YearState extends State<Year> {
             onPressed: () {
               globals.year = globals.years.values.elementAt(2);
               Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Alfa()));
+                  context, MaterialPageRoute(builder: (context) => const Alfa()));
             },
             style: ButtonStyle(
                 backgroundColor: MaterialStateProperty.all(Colors.red),

@@ -3,9 +3,8 @@ import 'package:rug/globals.dart' as globals;
 import 'package:http/http.dart' as http;
 import 'package:rug/feedback_model.dart';
 import 'dart:convert' as convert;
-import 'package:intl/intl.dart';
 
-var form = DateFormat('yy/MM/dd');
+var form = globals.form;
 
 class Podelili extends StatefulWidget {
   @override
@@ -111,6 +110,7 @@ class _PodeliliState extends State<Podelili> {
       setState(() {
         globals.ff
             .sort(((a, b) => a.time.toString().compareTo(b.time.toString())));
+        globals.ff = globals.ff.reversed.toList();
       });
     });
   }
@@ -269,18 +269,19 @@ class _PodeliliState extends State<Podelili> {
                               scrollDirection: Axis.horizontal,
                               child: DataTable(
                                 columnSpacing: 10,
-                                columns: const <DataColumn>[
-                                  DataColumn(label: Text('дата')),
-                                  DataColumn(label: Text('проект')),
-                                  DataColumn(
+                                columns: <DataColumn>[
+                                  DataColumn(label: Text(globals.text_form)),
+                                  const DataColumn(label: Text('проект')),
+                                  const DataColumn(
                                     label: Text("приход"),
                                     numeric: true,
                                   ),
-                                  DataColumn(
+                                  const DataColumn(
                                       label: Text("расход"), numeric: true),
-                                  DataColumn(label: Text('кто - что')),
-                                  DataColumn(
-                                      label: Text("вид расхода"), numeric: true),
+                                  const DataColumn(label: Text('кто - что')),
+                                  const DataColumn(
+                                      label: Text("вид расхода"),
+                                      numeric: true),
                                 ],
                                 rows: List<DataRow>.generate(
                                   globals.ff.length,
@@ -316,9 +317,8 @@ class _PodeliliState extends State<Podelili> {
                                           child: Text(
                                               "${globals.ff.elementAt(i).whoAndWhat}",
                                               softWrap: true))),
-                                      DataCell(Text(globals.ff
-                                          .elementAt(i)
-                                          .vid)),
+                                      DataCell(
+                                          Text(globals.ff.elementAt(i).vid)),
                                     ],
                                   ),
                                 ),

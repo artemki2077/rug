@@ -4,6 +4,8 @@ import 'package:rug/views/model/form.dart';
 import 'dart:math' as math;
 
 class Add extends StatefulWidget {
+  const Add({Key? key}) : super(key: key);
+
   @override
   _AddState createState() => _AddState();
 }
@@ -65,7 +67,7 @@ class _AddState extends State<Add> {
 
   Widget form(String name, Icon icon, TextEditingController _controller) {
     return Container(
-        margin: EdgeInsets.only(top: 5, bottom: 5),
+        margin: const EdgeInsets.only(top: 5, bottom: 5),
         child: TextFormField(
           decoration: InputDecoration(
             labelText: name,
@@ -82,41 +84,41 @@ class _AddState extends State<Add> {
     return Scaffold(
         key: _scaffoldKey,
         appBar: AppBar(
-          title: Text("добавить в таблицу"),
+          title: const Text("добавить в таблицу"),
           elevation: 0,
         ),
         body: Center(
             child: Container(
-                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 24),
+                padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 24),
                 child: Form(
                     key: _formKey,
                     child: ListView(
                   children: <Widget>[
-                    form("дата(дд.мм.гггг)", Icon(Icons.access_time), timeController),
+                    form("дата(дд.мм.гггг)", const Icon(Icons.access_time), timeController),
                     form(
-                        "компания", Icon(Icons.account_box_rounded), companiController),
+                        "компания", const Icon(Icons.account_box_rounded), companiController),
                     form("нал/безнал/другое",
-                        Icon(Icons.account_balance_wallet), nalController),
+                        const Icon(Icons.account_balance_wallet), nalController),
                     form(
-                        "проект", Icon(Icons.account_balance_sharp), projectController),
-                    form("кто - что", Icon(Icons.extension_rounded),
+                        "проект", const Icon(Icons.account_balance_sharp), projectController),
+                    form("кто - что", const Icon(Icons.extension_rounded),
                         whoAndWhatController),
-                    form("приход", Icon(Icons.add), prixodController),
-                    form("расход", Icon(Icons.remove),
+                    form("приход", const Icon(Icons.add), prixodController),
+                    form("расход", const Icon(Icons.remove),
                         rasixodController),
-                    form("остаток", Icon(Icons.monetization_on), ostatokController),
-                    form("вид расходов", Icon(Icons.ballot), vidController),
+                    form("остаток", const Icon(Icons.monetization_on), ostatokController),
+                    form("вид расходов", const Icon(Icons.ballot), vidController),
                     form(
-                        "подвид", Icon(Icons.arrow_drop_down_circle), podvidController),
-                    form("уточнения", Icon(Icons.add_box_rounded), ytochController),
-                    form("внутренняя переписка", Icon(Icons.archive), inPerController),
-                    form("сумма договора", Icon(Icons.money), sumDogovorController),
-                    form("номер договора", Icon(Icons.format_list_numbered),
+                        "подвид", const Icon(Icons.arrow_drop_down_circle), podvidController),
+                    form("уточнения", const Icon(Icons.add_box_rounded), ytochController),
+                    form("внутренняя переписка", const Icon(Icons.archive), inPerController),
+                    form("сумма договора", const Icon(Icons.money), sumDogovorController),
+                    form("номер договора", const Icon(Icons.format_list_numbered),
                         numDogovorController),
                     Transform.rotate(
                         angle: 1.5 * math.pi,
                         child: IconButton(
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.arrow_drop_down_circle_rounded,
                             ),
                             iconSize: 65,

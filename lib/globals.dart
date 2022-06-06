@@ -1,5 +1,6 @@
 library rug.globals;
 
+import 'package:intl/intl.dart';
 import 'urls.dart' as secrets;
 
 Map years = {
@@ -45,6 +46,8 @@ List<String> hhh = <String>[
   "оплачено",
   "спецсчёт",
 ];
+var text_form = "дд.мм.гг";
+var form = DateFormat('dd.MM.yy');
 List<String> hhhh = <String>["фирма", "поделили", "катер", "мастерская"];
 late Uri year;
 late Uri url21_22 = Uri.https("script.google.com", secrets.url21_22);
