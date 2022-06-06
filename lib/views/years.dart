@@ -17,10 +17,10 @@ class Year extends StatefulWidget {
 class _YearState extends State<Year> {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  _showSnackbar(String message) {
-    final snackBar = SnackBar(content: Text(message));
-    _scaffoldKey.currentState!.showSnackBar(snackBar);
-  }
+  // _showSnackbar(String message) {
+  //   final snackBar = SnackBar(content: Text(message));
+  //   _scaffoldKey.currentState!.showSnackBar(snackBar);
+  // }
 
   @override
   void initState() {
@@ -196,8 +196,12 @@ class _YearState extends State<Year> {
           margin: const EdgeInsets.only(top: 10.0),
           child: ElevatedButton(
               onPressed: () {
-                _showSnackbar("error");
-              },
+                // _showSnackbar("error");
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: const Text('error'),
+                    duration: const Duration(seconds: 1),
+                  ));
+                          },
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.redAccent),
                   padding: MaterialStateProperty.all(const EdgeInsets.all(15)),
@@ -217,7 +221,11 @@ class _YearState extends State<Year> {
           margin: const EdgeInsets.only(top: 10.0),
           child: ElevatedButton(
               onPressed: () {
-                _showSnackbar("error");
+                // _showSnackbar("error");
+                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: const Text('snack'),
+                    duration: const Duration(seconds: 1),
+                  ));
               },
               style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(Colors.amber),

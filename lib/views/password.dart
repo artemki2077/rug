@@ -18,10 +18,10 @@ class _PassworrdState extends State<Passworrd> {
 
   final _scaffoldKey = GlobalKey<ScaffoldState>();
 
-  _showSnackbar(String message) {
-    final snackBar = SnackBar(content: Text(message));
-    _scaffoldKey.currentState!.showSnackBar(snackBar);
-  }
+  // _showSnackbar(String message) {
+  //   final snackBar = SnackBar(content: Text(message));
+  //   _scaffoldKey.currentState!.showSnackBar(snackBar);
+  // }
 
 
   @override
@@ -87,7 +87,11 @@ class _PassworrdState extends State<Passworrd> {
                                           MaterialPageRoute(
                                               builder: (context) => Year()));
                                     }else{
-                                      _showSnackbar("неверный пароль");
+                                      // _showSnackbar("неверный пароль");
+                                       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                                        content: const Text('неверный пароль'),
+                                        duration: const Duration(seconds: 1),
+                                      ));
                                     }
                                   }
                               )))

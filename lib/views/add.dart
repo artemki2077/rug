@@ -51,19 +51,27 @@ class _AddState extends State<Add> {
       FormController formController = FormController((String response) {
         if (response == FormController.STATUS_SUCCESS) {
           //
-          _showSnackbar("отправилось усипешно");
+          // _showSnackbar("отправилось усипешно");
+           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: const Text('отправилось усипешно'),
+                    duration: const Duration(seconds: 1),
+                  ));
         } else {
-          _showSnackbar("не отправилось");
+          // _showSnackbar("не отправилось");
+           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: const Text('не отправилось'),
+                    duration: const Duration(seconds: 1),
+                  ));
         }
       });
       formController.submitForm(feedbackForm);
   }
 
   // Method to show snackbar with 'message'.
-  _showSnackbar(String message) {
-    final snackBar = SnackBar(content: Text(message));
-    _scaffoldKey.currentState!.showSnackBar(snackBar);
-  }
+  // _showSnackbar(String message) {
+  //   final snackBar = SnackBar(content: Text(message));
+  //   _scaffoldKey.currentState!.showSnackBar(snackBar);
+  // }
 
   Widget form(String name, Icon icon, TextEditingController _controller) {
     return Container(
