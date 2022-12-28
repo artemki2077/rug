@@ -33,6 +33,9 @@ class _HomeState extends State<Home> {
             if (!globals.h.contains(element['проект'])) {
               globals.h.add(element['проект']);
             }
+            if(element['проект'] == '\nМегаКупол сопровождение\n'){
+              print(element);
+            }
             feedbackModel.time = element['дата'];
             feedbackModel.compani = element['компания'];
             feedbackModel.nal = element['нал/безнал/другое'];
@@ -53,6 +56,7 @@ class _HomeState extends State<Home> {
         }
       });
       globals.h.sort();
+      // print(globals.h);
       setState(() {});
     }).catchError((error) {
       bError = true;

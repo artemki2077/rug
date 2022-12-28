@@ -197,9 +197,9 @@ class _YearState extends State<Year> {
           child: ElevatedButton(
               onPressed: () {
                 // _showSnackbar("error");
-                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: const Text('error'),
-                    duration: const Duration(seconds: 1),
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('error'),
+                    duration: Duration(seconds: 1),
                   ));
                           },
               style: ButtonStyle(
@@ -222,9 +222,9 @@ class _YearState extends State<Year> {
           child: ElevatedButton(
               onPressed: () {
                 // _showSnackbar("error");
-                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: const Text('snack'),
-                    duration: const Duration(seconds: 1),
+                 ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text('snack'),
+                    duration: Duration(seconds: 1),
                   ));
               },
               style: ButtonStyle(
